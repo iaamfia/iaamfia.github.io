@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💖 For Vlad 💖</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ffe4f0 0%, #fff0f5 50%, #ffe4f0 100%);
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            color: #ff69b4;
+            font-size: 2rem;
+            opacity: 0.4;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .sparkle {
+            position: absolute;
+            color: #ffd700;
+            font-size: 1.5rem;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        /* Page 1 - Password Screen */
+        #page1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .password-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3);
+            max-width: 450px;
+            width: 100%;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        .password-container h1 {
+            color: #ff1493;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: normal;
+            letter-spacing: 2px;
+        }
+
+        .password-container p {
+            color: #ff69b4;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 15px;
+            font-size: 1rem;
+            border: 2px solid #ff69b4;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            background: #fff5f9;
+            color: #ff1493;
+            text-align: center;
+            letter-spacing: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .password-input:focus {
+            outline: none;
+            border-color: #ff1493;
+            box-shadow: 0 0 15px rgba(255, 20, 147, 0.3);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+            background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.4);
+        }
+
+        .error-message {
+            color: #ff1493;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        /* Page 2 - Love Letter */
+        #page2 {
+            display: none;
+            padding: 60px 40px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffe4f0 0%, #fff0f5 50%, #ffe4f0 100%);
+        }
+
+        .letter-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 60px;
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.2);
+            line-height: 1.8;
+        }
+
+        .letter-container h2 {
+            color: #ff1493;
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: normal;
+        }
+
+        .letter-content {
+            color: #666;
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+        }
+
+        .letter-content p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .question-section {
+            text-align: center;
+            margin: 40px 0 30px;
+            font-size: 1.2rem;
+            color: #ff1493;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .response-btn {
+            padding: 12px 40px;
+            font-size: 1rem;
+            background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            min-width: 120px;
+        }
+
+        .response-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(255, 20, 147, 0.3);
+        }
+
+        .response-message {
+            display: none;
+            background: rgba(255, 192, 203, 0.3);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #ff1493;
+            margin-top: 30px;
+            font-size: 1.05rem;
+            color: #666;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .signature {
+            text-align: center;
+            margin-top: 50px;
+            font-style: italic;
+            color: #ff69b4;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        /* Decorative elements */
+        .decoration {
+            text-align: center;
+            color: #ff69b4;
+            margin: 20px 0;
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 600px) {
+            .password-container {
+                padding: 40px 30px;
+            }
+
+            .password-container h1 {
+                font-size: 2rem;
+            }
+
+            .letter-container {
+                padding: 40px 25px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .response-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="background" id="background"></div>
+
+    <!-- Page 1: Password Screen -->
+    <div id="page1">
+        <div class="password-container">
+            <h1>💖</h1>
+            <p>Enter the password 💖</p>
+            <input 
+                type="password" 
+                id="passwordInput" 
+                class="password-input" 
+                placeholder="✦ password ✦"
+                autocomplete="off"
+            >
+            <button class="submit-btn" onclick="checkPassword()">Unlock My Heart 💕</button>
+            <div class="error-message" id="errorMessage">
+                ✗ That's not quite right... try again 💔
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 2: Love Letter -->
+    <div id="page2">
+        <div class="letter-container">
+            <h2>I hope you like this letter i made^^</h2>
+            
+            <div class="decoration">✦ ✦ ✦</div>
+
+            <div class="question-section">Are you disappointed in me? Yes or no.</div>
+
+            <div class="letter-content">
+                <p>I've been thinking about this a lot, and I needed to tell you everything. I know I can be dramatic sometimes. I know I've crossed the line more often than I'd like to admit. And if you're disappointed in me, I understand completely.</p>
+
+                <p>I want to apologize for all the times I've let my emotions overflow without considering how it might affect you. For the moments when I was selfish, when I was thoughtless, when I just let my feelings take over without thinking about you standing there on the other side. I'm sorry for that. I truly am.</p>
+
+                <p>But I need you to know something that goes deeper than any apology: I care about you. Deeply. More than I know how to put into words. You matter to me in a way that feels almost impossible to explain. When I'm with you, everything makes sense. When I'm not, I'm always thinking about when I'll see you again.</p>
+
+                <p>I know I'm not perfect. I know I can be overwhelming, that I sometimes say things I regret, that I can be too much. But here's what I need you to understand: even on my worst days, even when I'm a mess, even when I'm falling apart—my love for you as a friend will never wavers. It's the one constant thing in my life.</p>
+
+                <p>I want you to know that you are never alone. Not now, not ever. Whatever you're going through, whatever you're feeling, whatever keeps you up at night—I'm here. I will always be here. Even when it's hard. Even when things aren't perfect between us. Even when we're both struggling. I won't leave. I can't leave. You mean too much to me.</p>
+
+                <p>I'm trying to be better. Every single day, I'm trying to be more patient, more thoughtful, more aware of how my actions affect you. I'm not perfect at it, but I promise you that the effort is real. You deserve someone who cares, and I do. I care so much it sometimes scares me how much I care.</p>
+
+                <p>You've become so important to me. You're my safe place, my person, my everything. And if I've hurt you or let you down, please know that it wasn't because I didn't care. It was because I'm learning how to love you better as a friend, how to be better for you, how to show up the way you deserve.</p>
+
+                <p>So here's my question back to you: Can you see past my mistakes and see how much I care for you? Because that was real. It's true. And it's never going to fade.</p>
+            </div>
+
+            <div class="question-section">Are you still disappointed in me?</div>
+
+            <div class="button-group">
+                <button class="response-btn" onclick="showResponse('yes')">Yes</button>
+                <button class="response-btn" onclick="showResponse('no')">No</button>
+            </div>
+
+            <div class="response-message" id="yesResponse">
+                <p>💔 I understand. I'm going to keep trying to be better for you, because you're worth it. I'm going to work on myself, on how I show up for you, on being the person you deserve. Please don't give up on me. I promise I'm not giving up on you either. I will always be your bestie. 💕</p>
+            </div>
+
+            <div class="response-message" id="noResponse">
+                <p>💕 Thank you... thank you so much for giving me another chance, for believing in me, for seeing past my flaws and still choosing to be here. You mean everything to me. I promise to treasure this, to treasure you, to show up better every single day. My love for you as your bestie is infinite and unconditional. You've made me the happiest person alive. 💖✨</p>
+            </div>
+
+            <div class="signature">- kai 💕</div>
+        </div>
+    </div>
+
+    <script>
+        // Generate animated background
+        function createBackground() {
+            const background = document.getElementById('background');
+            
+            // Create hearts
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '💕';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.top = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 6 + 's';
+                heart.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                background.appendChild(heart);
+            }
+
+            // Create sparkles
+            for (let i = 0; i < 20; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.innerHTML = '✨';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = Math.random() * 2 + 's';
+                background.appendChild(sparkle);
+            }
+        }
+
+        // Check password
+        function checkPassword() {
+            const passwordInput = document.getElementById('passwordInput');
+            const errorMessage = document.getElementById('errorMessage');
+            const correctPassword = 'may6'; // PASSWORD UPDATED TO 'may6'
+
+            if (passwordInput.value.toLowerCase() === correctPassword) {
+                errorMessage.style.display = 'none';
+                // Smooth transition
+                document.getElementById('page1').style.opacity = '0';
+                document.getElementById('page1').style.transition = 'opacity 0.8s ease';
+                setTimeout(() => {
+                    document.getElementById('page1').style.display = 'none';
+                    document.getElementById('page2').style.display = 'block';
+                    document.getElementById('page2').scrollIntoView({ behavior: 'smooth' });
+                }, 800);
+            } else {
+                errorMessage.style.display = 'block';
+                passwordInput.style.animation = 'heartbeat 0.5s ease-in-out';
+                setTimeout(() => {
+                    passwordInput.style.animation = '';
+                }, 500);
+                passwordInput.value = '';
+            }
+        }
+
+        // Allow Enter key to submit password
+        document.addEventListener('DOMContentLoaded', function() {
+            createBackground();
+            
+            document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    checkPassword();
+                }
+            });
+        });
+
+        // Show response
+        function showResponse(answer) {
+            document.getElementById('yesResponse').style.display = 'none';
+            document.getElementById('noResponse').style.display = 'none';
+            
+            if (answer === 'yes') {
+                document.getElementById('yesResponse').style.display = 'block';
+            } else {
+                document.getElementById('noResponse').style.display = 'block';
+            }
+
+            // Smooth scroll to response
+            setTimeout(() => {
+                document.querySelector('.response-message').scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+    </script>
+</body>
+</html>
